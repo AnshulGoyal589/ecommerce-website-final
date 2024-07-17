@@ -1,0 +1,54 @@
+<% layout('layout/boilerplate') -%>
+<head>
+    <style>
+
+        #card{
+            border:2px solid black;
+            width:350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #formdiv{
+            position: absolute;
+            display: inline-block;
+            border:2px solid black;
+            width:400px;
+            
+            right:300px;
+            top:90px;
+        }        
+    </style>
+</head>
+<h1>SHOW DETAILS</h1>
+<br><br><br>
+<div id="card">
+</a>
+    <img src="<%=product.img%>" alt="image not available" style="height:200px;width:345px">
+    <h3><%= product.name  %></h3>
+    <h4>Price: <%= product.price  %>$</h4>
+    <h5><%= product.desc  %>$</h5>
+    <a href="/products/<%=product._id%>/delete">DELETE</a>
+    <a href="/products/<%=product._id%>/update">UPDATE</a>
+</div>
+
+
+
+<div id="formdiv">
+    <form action="/products/<%=product._id%>/show" method="post">
+        <fieldset>
+            <label for="rating">Rating: </label>
+            <input type="range" id="rating" name="rating" step="1">
+            <br>
+            <br>
+            <label for="review">Review: </label>
+            <br>
+            <textarea name="text" id="rating" cols="30" rows="10"></textarea>
+            <br>
+            <button>SUBMIT</button>
+        </fieldset>
+    </form>
+
+    
+</div>

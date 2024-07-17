@@ -1,0 +1,120 @@
+<% layout('layout/boilerplate') -%>
+<head>
+    <style>
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        .product-details {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        .product-price {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .product-description {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-bottom: 15px;
+        }
+        .btn-delete {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-delete:hover {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+        .btn-details {
+            color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-details:hover {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        .heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .heart-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <% for(let product of products) { %>
+            <div class="col">
+                <div class="product-card position-relative">
+                    <div class="product-image">
+                        <img src="<%= product.img %>" alt="<%= product.name %>" class="img-fluid">
+                    </div>
+                    <i class="fa-regular fa-heart fa-lg heart-icon" onclick="toggleHeartClass(event)"></i>
+                    <div class="product-details">
+                        <h3 class="product-title"><%= product.name %></h3>
+                        <p class="product-price">Price: <%= product.price %>₹</p>
+                        <p class="product-description"><%= product.desc %></p>
+                        <div class="d-flex justify-content-between">
+                            <% if(currentUser && currentUser.identity === 'seller') { %>
+                                <form action="/products/<%= product._id %>?_method=DELETE" method="post">
+                                    <button class="btn btn-outline-danger btn-sm">
+                                        <i class="fa-solid fa-trash-can"></i> Delete
+                                    </button>
+                                </form>
+                            <% } %>
+                            <a href="/products/<%= product._id %>" class="btn btn-outline-success btn-sm">
+                                <i class="fa-solid fa-circle-info"></i> Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<script>
+    function toggleHeartClass(event) {
+        event.stopPropagation();
+        var heartIcon = event.target;
+        heartIcon.classList.toggle("fa-regular");
+        heartIcon.classList.toggle("fa-solid");
+        heartIcon.style.color = heartIcon.classList.contains("fa-solid") ? "#ff0000" : "#000000";
+    }
+
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', function() {
+            window.location.href = this.querySelector('a').href;
+        });
+    });
+</script>

@@ -1,0 +1,161 @@
+<% layout('layout/boilerplate') -%>
+
+<head>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            width: 40vw;
+            margin: 10vh auto;
+            background-color: #ffffff;
+            border-radius: 1vw;
+            box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.1);
+            padding: 3vh 3vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: "";
+            position: absolute;
+            top: -5vh;
+            left: -5vw;
+            width: 15vw;
+            height: 15vw;
+            background-color: #007bff;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .login-container::after {
+            content: "";
+            position: absolute;
+            bottom: -5vh;
+            right: -5vw;
+            width: 20vw;
+            height: 20vw;
+            background-color: #28a745;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .login-title {
+            color: #333333;
+            font-size: 3.5vh;
+            margin-bottom: 3vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-title::after {
+            content: "";
+            display: block;
+            width: 10vw;
+            height: 0.3vh;
+            background-color: #007bff;
+            margin: 1vh auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 2.5vh;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1vh;
+            color: #555555;
+            font-weight: 500;
+            font-size: 1.8vh;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.5vh 1vw 1.5vh 3vw;
+            border: 0.1vh solid #dddddd;
+            border-radius: 0.5vw;
+            font-size: 1.8vh;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2vh rgba(0, 123, 255, 0.25);
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 1vw;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 1.5vh;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0.5vw;
+            font-size: 1.8vh;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.1vw;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 2vh;
+            font-size: 1.6vh;
+            color: #666666;
+        }
+
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<div class="login-container">
+    <h2 class="login-title">Welcome Back</h2>
+    <form action="/login" method="post">
+        <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" name="username" class="form-input" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email address</label>
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="login-button">Log In</button>
+    </form>
+    <div class="register-link">
+        New to NexusMart? <a href="/register">Create an account</a>
+    </div>
+</div>
+

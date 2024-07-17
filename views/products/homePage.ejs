@@ -1,0 +1,202 @@
+<% layout('layout/boilerplate') -%>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusMart - Your Ultimate Shopping Destination</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .home-container {
+            width: 90vw;
+            max-width: 1200px;
+            margin: 5vh auto;
+            background-color: #ffffff;
+            border-radius: 2vw;
+            box-shadow: 0 1vh 4vh rgba(0, 0, 0, 0.1);
+            padding: 5vh 5vw;
+            position: relative;
+            overflow: hidden;
+        }
+        .home-container::before, .home-container::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .home-container::before {
+            top: -15vh;
+            left: -15vw;
+            width: 40vw;
+            height: 40vw;
+            background-color: #007bff;
+        }
+        .home-container::after {
+            bottom: -15vh;
+            right: -15vw;
+            width: 50vw;
+            height: 50vw;
+            background-color: #28a745;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        .home-title {
+            color: #333333;
+            font-size: 5vw;
+            margin-bottom: 3vh;
+            text-align: center;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5vw;
+        }
+        .home-title::after {
+            content: "";
+            display: block;
+            width: 20vw;
+            height: 0.5vh;
+            background-color: #007bff;
+            margin: 2vh auto 0;
+        }
+        .lead {
+            font-size: 2.2vh;
+            color: #555555;
+            text-align: center;
+            margin-bottom: 5vh;
+            line-height: 1.8;
+        }
+        .btn-explore {
+            display: block;
+            width: 60%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 2vh 3vw;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5vw;
+            font-size: 2.5vh;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.2vw;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-explore:hover {
+            background-color: #0056b3;
+            transform: translateY(-0.5vh);
+            box-shadow: 0 1vh 2vh rgba(0, 123, 255, 0.3);
+        }
+        .btn-explore::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        .btn-explore:hover::before {
+            width: 0;
+            height: 0;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 5vh;
+        }
+        .feature {
+            text-align: center;
+            padding: 2vh 2vw;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 1vw;
+            transition: all 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-1vh);
+            box-shadow: 0 1vh 2vh rgba(0, 0, 0, 0.1);
+        }
+        .feature i {
+            font-size: 4vh;
+            color: #007bff;
+            margin-bottom: 1vh;
+        }
+        .feature h3 {
+            font-size: 2.2vh;
+            color: #333333;
+            margin-bottom: 1vh;
+        }
+        .feature p {
+            font-size: 1.8vh;
+            color: #666666;
+        }
+        @media (max-width: 768px) {
+            .home-title {
+                font-size: 8vw;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature {
+                width: 80%;
+                margin-bottom: 3vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home-container">
+        <div class="content-wrapper">
+            <h1 class="home-title">NexusMart</h1>
+            <p class="lead">
+                Discover a world of amazing products at your fingertips. <br>
+                Browse our extensive collection, find great deals, and shop with confidence. <br>
+                Join our community of savvy shoppers today!
+            </p>
+            <a href="/products" class="btn btn-explore">
+                <i class="fas fa-shopping-cart"></i> Start Shopping
+            </a>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-tags"></i>
+                    <h3>Great Deals</h3>
+                    <p>Find amazing discounts on top products</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>  
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and reliable shipping options</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Shopping</h3>
+                    <p>Your transactions are always protected</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</body>
